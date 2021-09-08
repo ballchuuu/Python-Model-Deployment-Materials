@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Sentiment Prediction</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+  <!-- AJAX library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="section-heading text-uppercase">Text Sentiment Analysis</h1>
+      </div>
+      <div class="row text-center">
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict_html')}}" method="post">
+
+          <div class="form-group row">
+            <label for="model_type" class="col-sm-2 col-form-label">Choose a model:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="model_type" name="model_type" required="required">
+                <option value="DistilBERT">DistilBERT</option>
+                <option value="Vader">Vader</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <div class="col-sm-2 col-form-label">Input text: </div>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="2" name="text" placeholder="Please input a sentence here."
+                required="required"></textarea>
+            </div>
+          </div>
+          <br>
+          <button id="submit" class="btn btn-outline-dark">Predict</button>
+
+        </form>
+      </div>
+
+      <br>
+
+      <div class="container bg-light">
+        <div class="text-center">
+          <br>
+          <h6 id="prediction" onload="loadEmoji()"> {{prediction}} </h6>
+          <h6 id="text"> {{text}} </h6>
+          <h6 id="chosen_model"> {{model_type}} </h6>
+          <p id="model_details" class="item-intro text-muted"></p>
+
+          <script>
+
+            $(document).ready(function () {
+
+              // Javascript function to call a GET request from our API to return model details 
+              var model = document.getElementById("chosen_model").innerHTML.split(":")[1].trim()
+              $.get(
+                "http://localhost:5000/get_model_details",
+                { "model_type": model },
+
+                function (data) {
+                  document.getElementById("model_details").innerHTML += data;
+                }
+              );
+
+              // Javascript function to add emoji 
+              (function () {
+                var pred = document.getElementById("prediction").innerHTML.split(":")[1].trim()
+                console.log(pred)
+                if (pred == "Negative") {
+                  document.getElementById("prediction").innerHTML += " &#128530&#128530&#128530";
+                }
+                else {
+                  document.getElementById("prediction").innerHTML += " &#128522&#128522&#128522";
+                }
+              })();
+            });
+
+          </script>
+          <br>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  <!-- SB Forms JS -->
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>

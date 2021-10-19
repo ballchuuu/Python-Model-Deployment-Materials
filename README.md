@@ -40,7 +40,7 @@ The following repository contains the materials (i.e. codes and guide) for an in
             |- <b> Dockerfile </b>: Dockerfile to containerise the application
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             |- <b> mloe_flask_workshop </b>: Yaml file for Azure Kubernetes Service
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             |- <b> nvidia-device-plugin-ds </b>: Yaml file to configure GPU in Azure Kubernetes Service
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             |- <b> static </b>: Contains static assets such as model weights and frontend css files

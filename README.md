@@ -26,6 +26,7 @@ The following repository contains the materials (i.e. codes and guide) for an in
             |- <b> templates </b>: Contains the frontend HTML file
 
 <b> |- Lab03_Flask_Containerised_Deployment </b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;
         |- <b> 03_Guide_for_Containerised_Deployment.pdf </b>: Guide to explain more indepth on the containerising Flask applications using Docker and Azure Kubernetes Service
 <br>&nbsp;&nbsp;&nbsp;&nbsp;
         |- <b> Workshop </b>
@@ -47,6 +48,7 @@ The following repository contains the materials (i.e. codes and guide) for an in
             |- <b> templates </b>: Contains the frontend HTML file
             
 <b> |- Lab04_Flask_Database_Integration </b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;
         |- <b> 04_Guide_for_Database_Integration.pdf </b>: Guide to explain more indepth on the database integration for Flask applications
 <br>&nbsp;&nbsp;&nbsp;&nbsp;
         |- <b> Workshop </b>
